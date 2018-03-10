@@ -1,0 +1,9 @@
+---
+- hosts: slx01
+  gather_facts: no
+
+  tasks:
+    - name: NTP server 172.16.10.3
+      slxos_config:
+        lines: "ntp server 172.16.10.3 use-vrf mgmt-vrf"
+        save_when: changed

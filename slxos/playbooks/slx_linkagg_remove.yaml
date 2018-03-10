@@ -1,0 +1,9 @@
+---
+- hosts: slx01
+  gather_facts: no
+
+  tasks:
+    - name: Remove Port-Channel 200
+      slxos_linkagg:
+        group: 200
+        state: absent

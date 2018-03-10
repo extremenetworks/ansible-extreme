@@ -1,0 +1,12 @@
+---
+- hosts: slx01
+  gather_facts: no
+
+  tasks:
+    - name: Set Description and check LLDP
+      slxos_interface:
+        name: Ethernet 0/49
+        description: Ansible Foo
+        neighbors:
+        - port: Ethernet 0/25
+          host: DC2SPINE2

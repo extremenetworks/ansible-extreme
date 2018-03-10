@@ -1,0 +1,20 @@
+---
+- hosts: slx01
+  gather_facts: yes
+
+  tasks:
+    - name: Get running config
+      slxos_command:
+        commands: show run
+      register: show_run
+
+    - name: Save config to file
+      copy:
+        content: "{{ show_run.stdout[0] }}"
+        dest: "backups/{{inventory_hostname}}-{{ansible_facts.date_time.iso8601}}.txt"
+
+    - name: PTP on Eth 0/24
+      slxos_config:
+        lines: protocol ptp
+        parents: interface Ethernet 0/24
+        save_when: modified

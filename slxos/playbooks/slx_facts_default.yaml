@@ -1,0 +1,18 @@
+---
+- hosts: slx01
+  gather_facts: no
+
+  tasks:
+    - name: Get default set of facts
+      slxos_facts:
+
+    - name: Print info about device
+      vars:
+        msg: |
+          {{ ansible_net_hostname }} is a {{ ansible_net_model }} running {{ ansible_net_version }}.
+          Serial number: {{ ansible_net_serialnum }}. Free memory: {{ ansible_net_memfree_mb }}/{{ ansible_net_memtotal_mb }}MB
+          All IPv4 addresses: {{ ansible_net_all_ipv4_addresses | to_nice_json }}
+          All IPv6 addresses: {{ ansible_net_all_ipv6_addresses | to_nice_json }}
+          LLDP neighbors: {{ ansible_net_neighbors | to_nice_json }}
+      debug:
+        msg: "{{ msg.split('\n') }}"

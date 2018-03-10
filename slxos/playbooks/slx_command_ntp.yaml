@@ -1,0 +1,16 @@
+---
+- hosts: slx01
+  gather_facts: no
+
+  tasks:
+    - name: Check ntp status
+      slxos_command:
+        commands: "show ntp status"
+        wait_for: result[0] contains 10.70.4.107
+        retries: 1
+
+    - name: Check for non-existent NTP server
+      slxos_command:
+        commands: "show ntp status"
+        wait_for: result[0] contains 10.70.4.108
+        retries: 1

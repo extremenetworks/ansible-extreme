@@ -1,0 +1,12 @@
+---
+- hosts: slx01
+  gather_facts: no
+
+  tasks:
+    - name: Get interface info
+      slxos_facts:
+        gather_subset: interfaces
+
+    - name: Print interface info
+      debug:
+        msg: "{{ ansible_net_interfaces }}"

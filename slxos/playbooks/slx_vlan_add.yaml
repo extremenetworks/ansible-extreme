@@ -1,0 +1,12 @@
+---
+- hosts: slx01
+  gather_facts: no
+
+  tasks:
+    - name: VLAN 101
+      slxos_vlan:
+        vlan_id: 101
+        name: "my vlan"
+        interfaces:
+          - Ethernet 0/13
+          - Ethernet 0/14

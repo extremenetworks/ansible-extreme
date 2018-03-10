@@ -1,0 +1,11 @@
+---
+- hosts: slx01
+  gather_facts: no
+
+  tasks:
+    - name: Check LLDP neighbors
+      slxos_interface:
+        name: 'Ethernet 0/41'
+        neighbors:
+        - port: Ethernet 0/41
+          host: SLX
