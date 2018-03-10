@@ -14,7 +14,7 @@ These instructions will be updated when the modules are merged upstream.
 * [Facts](#facts-module-slxos_facts) - `slxos_facts`
 * [VLAN](#vlan-module-slxos_vlan) - `slxos_vlan`
 * [Interface](#interface-module-slxos_interface) - `slxos_interface`
-* [LinkAgg](#Link Aggregation-module-slxos_linkagg) - `slxos_linkagg`
+* [LinkAgg](#link-aggregation-module-slxos_linkagg) - `slxos_linkagg`
 * [LLDP](#lldp-module-slxos_lldp) - `slxos_lldp`
 
 ## System Setup
