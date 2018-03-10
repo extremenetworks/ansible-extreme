@@ -291,7 +291,7 @@ Note the output: `changed=0`. It sees that the line is already there, and does n
 
 2. Removing a configuration line
 
-The `slxos_config` module is not declarative. By default it will not remove additional lines. There are ways around this with more complex playbooks. That's an exercise for the readr. But you can use `no` statements. Be aware that this will **always** report changes, because it sees that command as 'not present' so runs it every time.
+The `slxos_config` module is not declarative. By default it will not remove additional lines. There are ways around this with more complex playbooks. That's an exercise for the reader. But you can use `no` statements. Be aware that this will **always** report changes, because it sees that command as 'not present' so runs it every time.
 
 Create [slx_config_remove_ntp.yaml](./playbooks/slx_config_remove_ntp.yaml):
 ```yaml
