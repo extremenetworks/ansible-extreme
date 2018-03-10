@@ -1,0 +1,10 @@
+---
+- hosts: slx01
+  gather_facts: no
+
+  tasks:
+    - name: configure interface
+      slxos_interface:
+        name: 'Ethernet 0/6'
+        description: 'Configured by Ansible'
+        enabled: True

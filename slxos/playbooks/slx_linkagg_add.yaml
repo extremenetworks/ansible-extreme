@@ -1,0 +1,12 @@
+---
+- hosts: slx01
+  gather_facts: no
+
+  tasks:
+    - name: Create Port Channel
+      slxos_linkagg:
+        group: 200
+        mode: active
+        members:
+          - Ethernet 0/6
+          - Ethernet 0/7

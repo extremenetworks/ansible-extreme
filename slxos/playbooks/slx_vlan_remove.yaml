@@ -1,0 +1,9 @@
+---
+- hosts: slx01
+  gather_facts: no
+
+  tasks:
+    - name: Ensure VLAN 101 absent
+      slxos_vlan:
+        vlan_id: 101
+        state: absent

@@ -1,0 +1,8 @@
+---
+- hosts: slx01
+  gather_facts: no
+
+  tasks:
+    - name: Get all facts
+      slxos_facts:
+        gather_subset: all
