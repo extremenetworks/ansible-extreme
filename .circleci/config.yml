@@ -2,7 +2,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: ansible/ansible
+      - image: ansible/ansible:ubuntu1604
     steps:
       - checkout
       - run: pip install ansible-lint
