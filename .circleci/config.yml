@@ -7,9 +7,8 @@ jobs:
       - checkout
       - run:
           command: |
-            git clone https://github.com/StackStorm/ansible
+            git clone -b slxos_modules https://github.com/StackStorm/ansible
             cd ansible
-            git checkout slxos_modules
             pip install -r requirements.txt
             . ./hacking/env-setup
             pip install ansible-lint
