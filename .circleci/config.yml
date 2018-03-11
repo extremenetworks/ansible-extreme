@@ -1,14 +1,9 @@
 version: 2
 jobs:
-  test:
+  build:
     docker:
       - image: ansible/ansible:latest
     steps:
       - checkout
       - run: pip install ansible-lint
       - run: ansible-lint */*/*.yaml
-workflows:
-  version: 2
-  lint
-    jobs:
-      - test
