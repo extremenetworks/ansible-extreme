@@ -5,7 +5,13 @@ jobs:
       - image: ansible/ansible:ubuntu1604
     steps:
       - checkout
-      - run: git clone https://github.com/StackStorm/ansible && cd ansible && git checkout slxos_modules
-      - run: pip install -r ansible/requirements.txt
-      - run: pip install ansible-lint
-      - run: . ./ansible/hacking/env-setup && ansible-lint -v slxos/playbooks/*.yaml
+      - run:
+          command: |
+            git clone https://github.com/StackStorm/ansible
+            cd ansible
+            git checkout slxos_modules
+            pip install -r requirements.txt
+            . ./hacking/env-setup
+            pip install ansible-lint
+            cd ../slxos/playbooks
+            ansible-lint -v *.yaml
