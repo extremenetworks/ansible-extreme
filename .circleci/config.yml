@@ -8,4 +8,4 @@ jobs:
       - run: git clone https://github.com/StackStorm/ansible && cd ansible && git checkout slxos_modules
       - run: pip install -r ansible/requirements.txt
       - run: pip install ansible-lint
-      - run: . ./ansible/hacking/env-setup && ansible-lint slxos/playbooks/*.yaml
+      - run: . ./ansible/hacking/env-setup && ansible-lint -v slxos/playbooks/*.yaml
