@@ -30,9 +30,8 @@ Install Ansible in your home directory, using our latest development branch:
 #### Ansible Install
 
 ```shell
-git clone https://github.com/StackStorm/ansible
+git clone -b slxos_modules https://github.com/StackStorm/ansible
 cd ansible
-git checkout slxos_modules
 virtualenv venv
 .  ./venv/bin/activate
 pip install -r requirements.txt
