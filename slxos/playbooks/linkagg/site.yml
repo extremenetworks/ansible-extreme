@@ -1,8 +1,6 @@
 ---
 - hosts: network
-  connection: network_cli
   gather_facts: no
-  remote_user: admin
 
   tasks:
     - name: "Setting up link aggregation on: {{ inventory_hostname }}"

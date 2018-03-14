@@ -1,6 +1,5 @@
 ---
-ansible_host: 127.0.0.1
-ansible_port: 2222
+ansible_user: admin
 ansible_network_os: slxos
 ansible_connection: network_cli
 port_group_mapping:
