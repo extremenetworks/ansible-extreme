@@ -11,13 +11,13 @@ These instructions will be updated when the modules are merged upstream.
 ## Sections:
 
 * [System Setup](#system-setup)
-* [Command](#command-module-slxos_command) - `slxos_command`
-* [Config](#config-module-slxos_config) - `slxos_config`
-* [Facts](#facts-module-slxos_facts) - `slxos_facts`
-* [VLAN](#vlan-module-slxos_vlan) - `slxos_vlan`
-* [Interface](#interface-module-slxos_interface) - `slxos_interface`
-* [LinkAgg](#link-aggregation-module-slxos_linkagg) - `slxos_linkagg`
-* [LLDP](#lldp-module-slxos_lldp) - `slxos_lldp`
+* [Command](#command-module---slxos_command) - `slxos_command`
+* [Config](#config-module---slxos_config) - `slxos_config`
+* [Facts](#facts-module---slxos_facts) - `slxos_facts`
+* [VLAN](#vlan-module---slxos_vlan) - `slxos_vlan`
+* [Interface](#interface-module---slxos_interface) - `slxos_interface`
+* [LinkAgg](#link-aggregation-module---slxos_linkagg) - `slxos_linkagg`
+* [LLDP](#lldp-module---slxos_lldp) - `slxos_lldp`
 
 ## System Setup
 
