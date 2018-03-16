@@ -1,0 +1,30 @@
+---
+
+neighbors:
+  'Ethernet 0/49':
+    host: 'DC2SPINE1'
+    port: 'Ethernet 0/27'
+
+port_group_mapping:
+  - group: 200
+    members:
+      - Ethernet 0/6
+      - Ethernet 0/7
+
+vlans:
+  - vlan_id: 200
+    interfaces:
+      - Port-channel 200
+
+bgp_fabric:
+  asn: 65301
+  # router_id: 10.255.0.3
+  neighbor:
+    - {address: 10.254.254.3, remote_as: 65500}
+  networks:
+
+interfaces:
+  'Ethernet 0/49':
+    enabled: True
+    description: "DC2SPINE1 Eth 0/27"
+    ip: 10.254.254.2/31

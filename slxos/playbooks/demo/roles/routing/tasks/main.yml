@@ -1,0 +1,20 @@
+---
+
+- name: BGP Local AS
+  slxos_config:
+    #src: templates/routing.j2
+    parents: router bgp
+    lines: local-as {{ bgp_fabric.asn }}
+
+- name: BGP Peers
+  slxos_config:
+    parents: router bgp
+    lines: neighbor {{ item.address }} remote-as {{ item.remote_as }}
+  with_items: "{{ bgp_fabric.neighbor }}"
+
+- name: BGP Networks
+  slxos_config:
+    parents: router bgp
+    lines: network {{ item }}
+  with_items: "{{ bgp_fabric.network }}"
+  when: bgp_fabric.network is defined

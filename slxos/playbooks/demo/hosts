@@ -1,0 +1,10 @@
+[slx-leaf]
+DC2LEAF1 ansible_network_os=slxos ansible_connection=network_cli
+DC2LEAF2 ansible_network_os=slxos ansible_connection=network_cli
+
+[slx-spine]
+DC2SPINE1 ansible_network_os=slxos ansible_connection=network_cli
+
+[slx-all:children]
+slx-leaf
+slx-spine

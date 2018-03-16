@@ -1,0 +1,9 @@
+---
+ansible_user: admin
+ansible_ssh_pass: password
+
+ntp:
+  - '172.16.10.2'
+  - '172.16.10.5'
+
+timezone: Europe/Warsaw

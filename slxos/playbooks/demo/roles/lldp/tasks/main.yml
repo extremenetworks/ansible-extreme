@@ -1,0 +1,6 @@
+---
+
+- name: Configure LLDP to advertise Management IP
+  slxos_config:
+    lines: advertise optional-tlv management-address
+    parents: protocol lldp

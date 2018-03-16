@@ -1,0 +1,10 @@
+---
+
+- name: Get BGP status
+  slxos_command:
+    commands: "show ip bgp summary"
+  register: bgp_summary
+
+- name: Display BGP status
+  debug:
+    var: bgp_summary.stdout_lines[0]
