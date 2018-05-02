@@ -1,0 +1,10 @@
+---
+
+- hosts: slx-all
+
+  gather_facts: 'False'
+
+  roles:
+    - ntp_check
+    - lldp_check
+    - bgp_check

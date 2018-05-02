@@ -13,4 +13,4 @@ jobs:
             . ./hacking/env-setup
             pip install ansible-lint
             cd ../slxos/playbooks
-            ansible-lint -v *.yaml
+            ansible-lint -v *.yaml */*.yml

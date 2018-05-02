@@ -1,0 +1,16 @@
+---
+
+- hosts: slx-all
+
+  gather_facts: 'False'
+
+  roles:
+    - hostname
+    - ntp
+    - lldp
+    - role: interfaces
+      when: interfaces is defined
+    - port_channels
+    - vlans
+    - role: routing
+      when: bgp_fabric is defined

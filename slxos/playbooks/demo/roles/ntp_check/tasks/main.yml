@@ -1,0 +1,7 @@
+---
+
+- name: Check ntp status
+  slxos_command:
+    commands: "show ntp status"
+    wait_for: result[0] contains 172
+    retries: 1

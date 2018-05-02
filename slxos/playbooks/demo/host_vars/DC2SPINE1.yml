@@ -1,0 +1,27 @@
+---
+
+neighbors:
+  'Ethernet 0/25':
+    host: 'DC2LEAF1'
+    port: 'Ethernet 0/49'
+  'Ethernet 0/27':
+    host: 'DC2LEAF2'
+    port: 'Ethernet 0/49'
+
+bgp_fabric:
+  asn: 65500
+  # router_id: 10.255.0.3
+  neighbor:
+    - {address: 10.254.254.2, remote_as: 65301}
+    - {address: 10.254.254.4, remote_as: 65300}
+  networks:
+
+interfaces:
+  'Ethernet 0/25':
+    enabled: True
+    description: "DC2LEAF1 Eth 0/49"
+    ip: 10.254.254.5/31
+  'Ethernet 0/27':
+    enabled: True
+    description: "DC2LEAF2 Eth 0/49"
+    ip: 10.254.254.3/31

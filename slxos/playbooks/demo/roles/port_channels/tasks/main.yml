@@ -1,0 +1,9 @@
+---
+
+- name: "Configure LAGs"
+  slxos_linkagg:
+    group: "{{ item['group'] }}"
+    mode: active
+    members: "{{ item['members']|join(',') }}"
+  with_items: "{{ port_group_mapping }}"
+  when: port_group_mapping is defined

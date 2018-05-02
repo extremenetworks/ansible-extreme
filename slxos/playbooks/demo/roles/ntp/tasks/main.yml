@@ -1,0 +1,8 @@
+---
+
+- name: Set NTP and Timezone
+  slxos_config:
+    lines:
+      - ntp server {{ item }} use-vrf mgmt-vrf
+      - clock timezone {{ timezone }}
+  with_items: '{{ ntp }}'
