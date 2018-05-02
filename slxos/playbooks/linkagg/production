@@ -1,0 +1,9 @@
+[spines]
+spine01
+
+[leaves]
+leaf01
+
+[network:children]
+spines
+leaves

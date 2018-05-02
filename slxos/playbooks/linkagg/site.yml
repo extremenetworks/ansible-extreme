@@ -1,0 +1,11 @@
+---
+- hosts: network
+  gather_facts: no
+
+  tasks:
+    - name: "Setting up link aggregation on: {{ inventory_hostname }}"
+      slxos_linkagg:
+        group: "{{ item['group'] }}"
+        mode: active
+        members: "{{ item['members']|join(',') }}"
+      with_items: "{{ hostvars[inventory_hostname]['port_group_mapping'] }}"
