@@ -1,0 +1,9 @@
+---
+ansible_user: admin
+ansible_network_os: slxos
+ansible_connection: network_cli
+port_group_mapping:
+  - group: 200
+    members:
+      - Ethernet 0/6
+      - Ethernet 0/7
