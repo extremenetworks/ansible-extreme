@@ -1,0 +1,5 @@
+---
+
+- name: Set device hostname
+  slxos_config:
+    lines: 'switch-attributes host-name {{ inventory_hostname }}'

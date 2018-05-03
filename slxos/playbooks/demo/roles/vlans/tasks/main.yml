@@ -1,0 +1,8 @@
+---
+
+- name: "Configure VLANs"
+  slxos_vlan:
+    vlan_id: "{{ item['vlan_id'] }}"
+    interfaces: "{{ item['interfaces']|join(',') }}"
+  with_items: "{{ vlans }}"
+  when: vlans is defined

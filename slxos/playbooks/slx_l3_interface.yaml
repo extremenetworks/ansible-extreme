@@ -1,0 +1,10 @@
+---
+- hosts: slx01
+  gather_facts: no
+
+  tasks:
+    - name: Configure IP Address
+      slxos_l3_interface:
+        name: 'Ethernet 0/8'
+        ipv4: 192.0.2.8/24
+        ipv6: 2001:db8::8/32

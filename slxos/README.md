@@ -11,6 +11,7 @@ These instructions will be updated when the modules are merged upstream.
 ## Sections:
 
 * [System Setup](#system-setup)
+* [Multi-Node Demo](#multi---node-demo)
 * [Command](#command-module---slxos_command) - `slxos_command`
 * [Config](#config-module---slxos_config) - `slxos_config`
 * [Facts](#facts-module---slxos_facts) - `slxos_facts`
@@ -18,6 +19,10 @@ These instructions will be updated when the modules are merged upstream.
 * [Interface](#interface-module---slxos_interface) - `slxos_interface`
 * [LinkAgg](#link-aggregation-module---slxos_linkagg) - `slxos_linkagg`
 * [LLDP](#lldp-module---slxos_lldp) - `slxos_lldp`
+* [L2 Interface](#l2-interface-module---slxos_l2_interface) - `slxos_l2_interface`
+* [L3 Interface](#l3-interface-module---slxos_l3_interface) - `slxos_l3_interface`
+
+All playbooks shown in this README are also available in the [playbooks](./playbooks) directory.
 
 ## System Setup
 
@@ -83,6 +88,14 @@ Periodically you should pull down the latest developments. Run these commands:
 cd ~/ansible
 git pull
 ```
+
+## Multi-Node Demo
+
+Check the [demo](./demo) directory to see a playbook that configures various settings across multiple devices.
+
+It configures interfaces, IP address, NTP settings, hostnames, and BGP, using `hosts_vars` and `group_vars`.
+
+The rest of this README outlines individual modules.
 
 ## Command Module - slxos_command
 
@@ -1281,4 +1294,59 @@ PLAY RECAP *********************************************************************
 slx01                      : ok=1    changed=1    unreachable=0    failed=0
 
 (venv) extreme@rancid:~/playbooks$
+```
+
+## L2 Interface module - slxos_l2_interface
+
+This module can be used to configure L2-related interface parameters - e.g. trunk or access mode, the VLAN(s) permitted, native VLAN, etc.
+
+We do not need to provide the specific CLI. 
+
+This module has a similar interface to the [ios_l2_interface](http://docs.ansible.com/ansible/devel/modules/ios_l2_interface_module.html) module.
+
+1. Configure trunk and access interfaces
+[slx_l2_interface.yaml](./playbooks/slx_l2_interface.yaml):
+```yaml
+---
+- hosts: slx01
+  gather_facts: no
+  
+  tasks:
+    - name: configure access port
+      slxos_l2_interface:
+        name: 'Ethernet 0/6'
+        mode: access
+        access_vlan: 5
+
+    - name: configure trunk port
+      slxos_l2_interface:
+        name: 'Ethernet 0/7'
+        mode: trunk
+        native_vlan: 10
+        trunk_vlans: 5-10
+```
+
+The interfaces must be in 'switchport' mode first, and the VLANs must exist. The tasks will fail with an error if this is not done.
+
+## L3 Interface module - slxos_l3_interface
+
+This module can be used to configure L3-related interface parameters - e.g. IPv4 and IPv4 addresses.
+
+We do not need to provide the specific CLI. This can be used to configure IP addresses on physical, VE and Port-channel interfaces.
+
+This module has a similar interface to the [ios_l3_interface](http://docs.ansible.com/ansible/devel/modules/ios_l3_interface_module.html) module.
+
+1. Configure IPv4 and IPv6 addresses:
+[slx_l3_interface.yaml](./playbooks/slx_l3_interface.yaml):
+```yaml
+---
+- hosts: slx01
+  gather_facts: no
+  
+  tasks:
+    - name: Configure IP Address
+      slxos_l3_interface:
+        name: 'Ethernet 0/8'
+        ipv4: 192.0.2.8/24
+        ipv6: 2001:db8::8/32
 ```

@@ -1,0 +1,9 @@
+---
+
+- name: Check LLDP neighbors
+  slxos_interface:
+    name: "{{ item.key }}"
+    neighbors:
+      - port: "{{ item.value.port }}"
+        host: "{{ item.value.host }}"
+  with_dict: "{{ neighbors }}"

@@ -1,0 +1,17 @@
+---
+- hosts: slx01
+  gather_facts: no
+
+  tasks:
+    - name: configure access port
+      slxos_l2_interface:
+        name: 'Ethernet 0/6'
+        mode: access
+        access_vlan: 5
+
+    - name: configure trunk port
+      slxos_l2_interface:
+        name: 'Ethernet 0/7'
+        mode: trunk
+        native_vlan: 10
+        trunk_vlans: 5-10

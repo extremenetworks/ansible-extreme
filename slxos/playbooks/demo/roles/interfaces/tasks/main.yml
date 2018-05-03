@@ -1,0 +1,14 @@
+---
+
+- name: Interface state and description
+  slxos_interface:
+    name: "{{ item.key }}"
+    enabled: "{{ item.value.enabled }}"
+    description: "{{ item.value.description }}"
+  with_dict: "{{ interfaces }}"
+
+- name: Interface IP Address
+  slxos_config:
+    parents: interface {{ item.key }}
+    lines: ip address {{ item.value.ip }}
+  with_dict: "{{ interfaces }}"
