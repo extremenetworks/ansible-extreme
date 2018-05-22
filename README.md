@@ -26,7 +26,8 @@ SLX modules are in active development. Currently available modules are:
 * slxos\_l2\_interface – Manage L2 Interfaces
 * slxos\_l3\_interface – Manage L3 Interfaces
 
-These modules are in active development. Some have been merged with upstream Ansible, others have open Pull Requests. Check out the [README](./slxos/README.md) in the [slxos](./slxos) folder for more details about what the modules can do, how to install them, and example playbooks.
+These modules are in active development. They have been merged with Ansible's pre-release branch, will be included in Ansible's next GA version -2.6, ETA late June 2018. 
+You can get access to these now - check the [README](./slxos/README.md) in the [slxos](./slxos) folder for more details about what the modules can do, how to install them, and example playbooks.
 
 ## Ironware (MLXe)
 
@@ -42,7 +43,7 @@ Click the links above to see docs on how to use those modules.
 
 ## EXOS
 
-[Rafael Vencioneck](https://github.com/rdvencioneck) has begun work on EXOS modules. The first of these has been merged into the Ansible devel branch, and will go GA in version 2.6 (ETA July 2018). 
+[Rafael Vencioneck](https://github.com/rdvencioneck) has begun work on EXOS modules. The first of these has been merged into the Ansible devel branch, and will go GA in version 2.6 (ETA June 2018). 
 
 Available modules:
 

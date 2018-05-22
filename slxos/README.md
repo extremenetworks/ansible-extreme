@@ -2,11 +2,11 @@
 
 This document explains how to use Ansible with Extreme SLX devices.
 
-These modules are currently in development, and have not yet been merged with upstream Ansible. As such there are additional steps required to set up a development environment tracking the latest modules. 
+These modules have now yet been merged with upstream Ansible. They are currently in the "devel" branch. They will be included in 2.6 GA, which is expected to ship in late June 2018. Until then, there are some additional steps required to use these modules. 
 
 These instructions will show you how to set up a dev environment in your home directory, and provides example playbooks for using each of the available modules.
 
-These instructions will be updated when the modules are merged upstream.
+These instructions will be updated when Ansible 2.6 goes GA.
 
 ## Sections:
 
@@ -26,16 +26,16 @@ All playbooks shown in this README are also available in the [playbooks](./playb
 
 ## System Setup
 
-Install Ansible in your home directory, using our latest development branch:
+Install Ansible in your home directory, using the latest development branch:
 
-> NB in future you will be able to install Ansible using [normal Ansible installation procedures](https://docs.ansible.com/ansible/intro_installation.html). Our modules have not yet been merged upstream.
+> NB When Ansible 2.6 ships, you will be able to install Ansible using [normal Ansible installation procedures](https://docs.ansible.com/ansible/intro_installation.html).
 
 ### First time setup:
 
 #### Ansible Install
 
 ```shell
-git clone -b slxos_modules https://github.com/StackStorm/ansible
+git clone https://github.com/ansible/ansible.git --recursive
 cd ansible
 virtualenv venv
 .  ./venv/bin/activate
