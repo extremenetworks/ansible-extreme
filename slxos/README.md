@@ -24,6 +24,8 @@ These instructions will be updated when Ansible 2.6 goes GA.
 
 All playbooks shown in this README are also available in the [playbooks](./playbooks) directory.
 
+SLX Module documentation is in the [Ansible docs here](http://docs.ansible.com/ansible/devel/modules/list_of_network_modules.html#slxos)
+
 ## System Setup
 
 Install Ansible in your home directory, using the latest development branch:
