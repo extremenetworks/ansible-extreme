@@ -7,6 +7,7 @@ jobs:
       - checkout
       - run:
           command: |
+            sudo apt -y install git
             git clone --depth 1 -b slxos_modules https://github.com/StackStorm/ansible
             cd ansible
             pip install -r requirements.txt
