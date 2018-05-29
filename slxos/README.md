@@ -11,7 +11,7 @@ These instructions will be updated when the modules are merged upstream.
 ## Sections:
 
 * [System Setup](#system-setup)
-* [Multi-Node Demo](#multi---node-demo)
+* [Multi-Node Demo](#multi-node-demo)
 * [Command](#command-module---slxos_command) - `slxos_command`
 * [Config](#config-module---slxos_config) - `slxos_config`
 * [Facts](#facts-module---slxos_facts) - `slxos_facts`
@@ -91,7 +91,7 @@ git pull
 
 ## Multi-Node Demo
 
-Check the [demo](./demo) directory to see a playbook that configures various settings across multiple devices.
+Check the [playbooks/demo](./playbooks/demo) directory to see a playbook that configures various settings across multiple devices.
 
 It configures interfaces, IP address, NTP settings, hostnames, and BGP, using `hosts_vars` and `group_vars`.
 
