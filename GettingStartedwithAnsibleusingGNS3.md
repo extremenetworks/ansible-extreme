@@ -1,8 +1,7 @@
 # EXOS: Getting Started with Ansible using GNS3
 
 ## Contents
-
-* [Pre-requisites](#Pre-requisites:)
+* [Pre-requisites](#Pre-requisites)
 * [Setting up GNS3 with EXOS-VM](#Setting-up-GNS3-with-EXOS-VM)
 * [Setting up GNS3 with Network Automation Docker Container](#Setting-up-GNS3-with-Network-Automation-Docker-Container)
 * [Setting up a Test Topology](#Setting-up-a-Test-Topology)
@@ -18,7 +17,7 @@
 * [Testing the Setup](#Testing-the-Setup)
 
 
-## Pre-requisites:
+## Pre-requisites
 
 - GNS3 installed on any supported OS
 - GNS3 VM installed on any supported Hypervisor
