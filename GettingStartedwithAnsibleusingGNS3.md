@@ -1,20 +1,20 @@
 # EXOS: Getting Started with Ansible using GNS3
 
 ## Sections:
-* [Pre-requisites](#Pre-requisites)
-* [Setting up GNS3 with EXOS-VM](#Setting-up-GNS3-with-EXOS-VM)
-* [Setting up GNS3 with Network Automation Docker Container](#Setting-up-GNS3-with-Network-Automation-Docker-Container)
-* [Setting up a Test Topology](#Setting-up-a-Test-Topology)
-	- [EXOS Device Setup](#EXOS-Device-Setup)
-	- [Network Automation Container Setup](#Network-Automation-Container-Setup)
-* [System Setup](#System-Setup)
-	- [Installing Ansible](#Installing-Ansible)
-	- [Setting up the Virtual Environment](#Setting-up-the-Virtual-Environment)
-	- [Configuring the Local hosts file](#Configuring-the-Local-hosts-file)
-	- [Creating an Ansible configuration file](#Creating-an-Ansible-configuration-file)
-	- [Creating and configuring the Ansible inventory file](#Creating-and-configuring-the-Ansible-inventory-file)
-	- [Creating and configuring the Variable file](#Creating-and-configuring-the-Variable-file)
-* [Testing the Setup](#Testing-the-Setup)
+* [Pre-requisites](#pre-requisites)
+* [Setting up GNS3 with EXOS-VM](#setting-up-gns3-with-exos-vm)
+* [Setting up GNS3 with Network Automation Docker Container](#setting-up-gns3-with-network-automation-docker-container)
+* [Setting up a Test Topology](#setting-up-a-test-topology)
+	- [EXOS Device Setup](#exos-device-setup)
+	- [Network Automation Container Setup](#network-automation-container-setup)
+* [System Setup](#system-setup)
+	- [Installing Ansible](#installing-ansible)
+	- [Setting up the Virtual Environment](#setting-up-the-virtual-environment)
+	- [Configuring the Local hosts file](#configuring-the-local-hosts-file)
+	- [Creating an Ansible configuration file](#creating-an-ansible-configuration-file)
+	- [Creating and configuring the Ansible inventory file](#creating-and-configuring-the-ansible-inventory-file)
+	- [Creating and configuring the Variable file](#creating-and-configuring-the-variable-file)
+* [Testing the Setup](#testing-the-setup)
 
 
 ## Pre-requisites
