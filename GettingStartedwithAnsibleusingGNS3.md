@@ -261,7 +261,9 @@ ansible_ssh_pass: xtrm_pass
 
 ## Testing the Setup
 
-Run command ```ansible S1 -m ping``` from the Network Automation container to check if S1 is reachable through ansible
+1. To confirm your credentials, connect to a network device(EXOS-VM) manually using command ```ssh xtrm_user@S1``` and run few show comamnds to verify the same
+
+2. Once done, exit out of it and run command ```ansible S1 -m ping``` from the Network Automation container to check if S1 is reachable through ansible
 
 Expected Result:
 ```sh
