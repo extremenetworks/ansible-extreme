@@ -131,7 +131,7 @@ The main purpose of Python virtual environments is to create an isolated environ
 ```sh
 root@NetworkAutomation-1:~# apt-get install virtualenv
 root@NetworkAutomation-1:~# cd ansible
-root@NetworkAutomation-1:~\ansible# virtualenv venv
+root@NetworkAutomation-1:~/ansible# virtualenv venv
 ```
 2. Do a 'ls' while being under 'ansible' folder and make sure that a 'venv' folder is successfully created. Sample command and its output is below:
 
