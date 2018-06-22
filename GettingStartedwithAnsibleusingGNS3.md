@@ -1,5 +1,23 @@
 # EXOS: Getting Started with Ansible using GNS3
 
+## Contents
+
+* [Pre-requisites](#Pre-requisites:)
+* [Setting up GNS3 with EXOS-VM](#Setting-up-GNS3-with-EXOS-VM)
+* [Setting up GNS3 with Network Automation Docker Container](#Setting-up-GNS3-with-Network-Automation-Docker-Container)
+* [Setting up a Test Topology](#Setting-up-a-Test-Topology)
+	- [EXOS Device Setup](#EXOS-Device-Setup)
+	- [Network Automation Container Setup](#Network-Automation-Container-Setup)
+* [System Setup](#System-Setup)
+	- [Installing Ansible](#Installing-Ansible)
+	- [Setting up the Virtual Environment](#Setting-up-the-Virtual-Environment)
+	- [Configuring the Local hosts file](#Configuring-the-Local-hosts-file)
+	- [Creating an Ansible configuration file](#Creating-an-Ansible-configuration-file)
+	- [Creating and configuring the Ansible inventory file](#Creating-and-configuring-the-Ansible-inventory-file)
+	- [Creating and configuring the Variable file](#Creating-and-configuring-the-Variable-file)
+* [Testing the Setup](#Testing-the-Setup)
+
+
 ## Pre-requisites:
 
 - GNS3 installed on any supported OS
