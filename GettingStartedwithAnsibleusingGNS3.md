@@ -1,6 +1,6 @@
 # EXOS: Getting Started with Ansible using GNS3
 
-## Contents
+## Sections:
 * [Pre-requisites](#Pre-requisites)
 * [Setting up GNS3 with EXOS-VM](#Setting-up-GNS3-with-EXOS-VM)
 * [Setting up GNS3 with Network Automation Docker Container](#Setting-up-GNS3-with-Network-Automation-Docker-Container)
