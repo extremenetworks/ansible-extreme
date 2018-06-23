@@ -49,4 +49,6 @@ Available modules:
 
 * [exos_command](https://docs.ansible.com/ansible/devel/modules/exos_command_module.html) - Run arbitrary commands
 
+Refer [this](https://github.com/DilrajSK/ansible-extreme/blob/master/GettingStartedwithAnsibleusingGNS3.md) document to simulate Ansible on EXOS devices using GNS3
+
 Click the links above to see docs on how to use those modules.
