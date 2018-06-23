@@ -29,7 +29,7 @@
 2. Download the required qcow2 file from our [GitHub Website]
 3. Import the downloaded template in GNS3 and load the qcow2 file downloaded in step 2. Visit this [link] for details
 4. Drag the installed appliance to the workspace and start it up
-5. Run few show commands on the device to make sure that its working fine
+5. Run some show commands to make sure it is working. For example ```show switch``` and ```show version```
 >NOTE: Default credentials to login to the device is "admin"/"". Password is blank
 
 ## Setting up GNS3 with Network Automation Docker Container
@@ -39,7 +39,7 @@
 3. Once done, the "Network Automation" Container can be seen under the "End Devices" list
 4. Drag the docker container to the workspace and GNS3 will automatically pull the required files from its repository over the Internet
 
-> By default, the Network Automation docker container includes Python 2.7, NAPALM, pyntc, Netmiko and Ansible. So no need to install those separately.
+> By default, the Network Automation docker container includes Python 2.7, NAPALM, pyntc, Netmiko and Ansible. So you do not need to install these separately.
 
 ## Setting up a Test Topology
 
@@ -50,7 +50,7 @@ Prepare the topology as show in the below image in GNS3 Workspace:
 
 ### EXOS Device Setup
 
-Power-up any **one** of the EXOSVM device from the above topology and perform the below configuration.
+Power-up any **one** of the EXOSVM devices from the above topology and perform the below configuration:
 
 1. Configure user-defined IP address for Default VLAN interface
 ```sh
@@ -97,7 +97,7 @@ iface eth0 inet dhcp
 
 ## System Setup
 
-Ideally, there is no need to install ansible on Network Automation Docker Container as it already comes pre-installed with it. But for those who are using their own standalone Linux Machines can go though the below section to install the same.
+Ideally, there is no need to install Ansible on Network Automation Docker Container as it already comes pre-installed with it. If you are using your own Linux system, you will need to go through the section below to install Ansible:
 
 ### Installing Ansible
 
@@ -108,7 +108,7 @@ root@NetworkAutomation-1:~# apt-get update
 root@NetworkAutomation-1:~# apt-get install git
 root@NetworkAutomation-1:~# git clone https://github.com/ansible/ansible.git --recursive
 ```
-2. Do a 'ls' to make sure that ansible folder is successfully cloned. Sample command and its output is below:
+2. Run ```ls``` to make sure that ansible folder is successfully cloned. Sample command and its output is below:
 
 ```sh
 root@NetworkAutomation-1:~# ls
@@ -119,7 +119,7 @@ ansible
 
 ```sh
 root@NetworkAutomation-1:~# cd ansible
-root@NetworkAutomation-1:~#git pull
+root@NetworkAutomation-1:~# git pull
 ```
 
 ### Setting up the Virtual Environment
@@ -133,7 +133,7 @@ root@NetworkAutomation-1:~# apt-get install virtualenv
 root@NetworkAutomation-1:~# cd ansible
 root@NetworkAutomation-1:~/ansible# virtualenv venv
 ```
-2. Do a 'ls' while being under 'ansible' folder and make sure that a 'venv' folder is successfully created. Sample command and its output is below:
+2. Run ```ls``` while being under 'ansible' folder and make sure that a 'venv' folder is successfully created. Sample command and its output is below:
 
 ```sh
 root@NetworkAutomation-1:~/ansible# ls
@@ -148,8 +148,8 @@ README.rst            examples                  setup.py
 3. Activate the 'venv' virtual environment
 
 ```sh
-root@NetworkAutomation-1:~#source ./ansible/venv/bin/activate
-root@NetworkAutomation-1:~#source ./ansible/hacking/env-setup
+root@NetworkAutomation-1:~# source ./ansible/venv/bin/activate
+root@NetworkAutomation-1:~# source ./ansible/hacking/env-setup
 ```
 >NOTE: Commands in Step 3 needs to be executed at each login.
 
@@ -183,7 +183,7 @@ ff02::2 ip6-allrouters
 192.168.122.100 S1
 ```
 
-> If one has more than one switch in the network, then additional lines can be added under ```192.168.122.100 S1```
+> If you have more than one virtual switch in your topology, then additional lines under ```192.168.122.100 S1```
 
 > Visit this [tutorial] to understand how to edit a file using nano editor
 
@@ -261,7 +261,7 @@ ansible_ssh_pass: xtrm_pass
 
 ## Testing the Setup
 
-1. To confirm your credentials, connect to a network device(EXOS-VM) manually using command ```ssh xtrm_user@S1``` and run few show comamnds to verify the same
+1. To confirm your credentials, connect to a network device(EXOS-VM) manually using command ```ssh xtrm_user@S1``` and run few show commands to verify the same
 
 2. Once done, exit out of it and run command ```ansible S1 -m ping``` from the Network Automation container to check if S1 is reachable through ansible
 
