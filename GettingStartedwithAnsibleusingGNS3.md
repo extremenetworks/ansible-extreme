@@ -273,7 +273,7 @@ S1 | SUCCESS => {
     "ping": "pong"
 }
 ```
-That concludes this guide. Now device S1 is ready to accept ansible [Ad-Hoc Commands](./WorkingwithAnsibleAdHocCommans.md) and Playbooks from the Network Automation container.
+That concludes this guide. Now device S1 is ready to accept ansible [Ad-Hoc Commands](./WorkingwithAnsibleAdHocCommands.md) and Playbooks from the Network Automation container.
 
 [GNS3 Marketplace]: <https://www.gns3.com/marketplace/appliances>
 [GitHub Website]: <https://github.com/extremenetworks/Virtual_EXOS#qcow2-files-for-gns3>
