@@ -8,13 +8,13 @@
 	- [Check Ansible Version](#check-ansible-version)
 	- [Check available hosts in Ansible Inventory](#check-available-hosts-in-ansible-inventory)
 	- [Ansible Help](#ansible-help)
-* [Basic Ad-Hoc Commands](#basic-ad-hoc-commands)
+* [Basic Ansible Ad-Hoc Commands](#basic-ansible-ad-hoc-commands)
 	- [Pinging Hosts](#pinging-hosts)
 	- [Gathering Facts](#gathering-facts)
 	- [Get Version Details](#get-version-details)
-  - [Logging in with a different user](#logging-in-with-a-different-user)
-  - [Filtering Output](#filtering-output)
-  - [Saving Output in a File](#saving-output-in-a-file)
+  	- [Logging in with a different user](#logging-in-with-a-different-user)
+  	- [Filtering Output](#filtering-output)
+  	- [Saving Output in a File](#saving-output-in-a-file)
 * [Conclusion](#conclusion)
 
 ## Introduction
@@ -75,7 +75,7 @@ Run this command to see all the available options under ```ansible```.
 
 Refer [this](https://docs.ansible.com/ansible/latest/user_guide/command_line_tools.html) document for more details on working with Command Line Tools
 
-## Basic Ad-Hoc Commands
+## Basic Ansible Ad-Hoc Commands
 
 ### Pinging Hosts
 
