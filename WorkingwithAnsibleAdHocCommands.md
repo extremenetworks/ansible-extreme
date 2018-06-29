@@ -172,7 +172,7 @@ S1 | SUCCESS => {
     ]
 }
 ```
-NOTE: For all the above examples in this section, ```show version``` can be replaced by any other valid ```show``` command. For example, use below command to check the details of Default VLAN.
+NOTE: For all the above examples in this section, command ```show version``` can be replaced by any other valid ```show``` command. For example, use below command to check the details of Default VLAN.
 
 ```ansible S1 -m exos_command -a "commands='show ipconfig vlan Default'"```
 
