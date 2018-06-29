@@ -189,4 +189,4 @@ ansible  ansible.cfg  playbooks  sh_ver.txt
 ```
 ## Conclusion
 
-At the time of writing this guide, there is no support for running configuration commands on EXOS devices. As we expect to release an ```exos_config``` module soon, this guide will be updated accordingly with some sample configuration-related Ad-Hoc Commands.
+At the time of writing this guide, there is no support for running configuration commands on EXOS devices. As we expect to release an ```exos_config``` module soon, this guide will be updated accordingly with some more configuration-related Ad-Hoc Commands.
