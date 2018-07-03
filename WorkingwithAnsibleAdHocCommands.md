@@ -8,6 +8,7 @@
 	- [Check Ansible Version](#check-ansible-version)
 	- [Check available hosts in Ansible Inventory](#check-available-hosts-in-ansible-inventory)
 	- [Ansible Help](#ansible-help)
+	- [Ansible Documentation](#ansible-documentation)
 * [Basic Ansible Ad-Hoc Commands](#basic-ansible-ad-hoc-commands)
 	- [Pinging Hosts](#pinging-hosts)
 	- [Gathering Facts](#gathering-facts)
@@ -67,6 +68,14 @@ Sample command and output:
     S4
     S5
 ```
+### Ansible Documentation
+
+```ansible-doc <module_name>```
+
+This command shows the documentation of a particular module. This includes, supported arguments, few examples and return values of the module. For example, run below command to get the documentation for "exos_command" module
+
+```ansible-doc exos_command```
+
 ### Ansible Help
 
 ```ansible -h```
