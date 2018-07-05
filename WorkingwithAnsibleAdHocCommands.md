@@ -13,7 +13,7 @@
 	- [Pinging Hosts](#pinging-hosts)
 	- [Gathering Facts](#gathering-facts)
 	- [Get Version Details](#get-version-details)
-	- [Passing Multiple show Commands](#passingmultipleshowcommands)
+	- [Passing Multiple show Commands](#passing-multiple-show-commands)
   	- [Logging in with a different user](#logging-in-with-a-different-user)
   	- [Filtering Output](#filtering-output)
   	- [Saving Output in a File](#saving-output-in-a-file)
