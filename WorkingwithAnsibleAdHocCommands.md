@@ -13,6 +13,7 @@
 	- [Pinging Hosts](#pinging-hosts)
 	- [Gathering Facts](#gathering-facts)
 	- [Get Version Details](#get-version-details)
+	- [Passing Multiple show Commands](#passingmultipleshowcommands)
   	- [Logging in with a different user](#logging-in-with-a-different-user)
   	- [Filtering Output](#filtering-output)
   	- [Saving Output in a File](#saving-output-in-a-file)
@@ -152,6 +153,14 @@ S1 | SUCCESS => {
 }
 ```
 > NOTE: "stdout" and "stdout_lines" are the return values of "exos_command". They both have the same result except the way the output is formatted.
+
+### Passing Multiple show Commands
+
+```ansible <device> -m exos_command -a "commands='<command_1>,<command_2>'"```
+
+Use the above format to pass multiple show commands in a single ad-hoc command. Example below:
+
+```ansible S1 -m exos_command -a "commands='show version,show accounts'"```
 
 ### Logging in with a different User
 
