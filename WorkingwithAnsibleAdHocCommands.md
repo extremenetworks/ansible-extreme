@@ -7,6 +7,10 @@
 * [Basic Ansible Commands](#basic-ansible-commands)
 	- [Check Ansible Version](#check-ansible-version)
 	- [Check available hosts in Ansible Inventory](#check-available-hosts-in-ansible-inventory)
+	- [Running Ansible Playbook](#running-ansible-playbook)
+		- [Running Ansible Playbook in Check mode](#running-ansible-playbook-in-check-mode)
+		- [Running Ansible Playbook in Verbose mode](#running-ansible-playbook-in-verbose-mode)
+		- [Running Ansible Playbook by Limiting the Hosts](#running-ansible-playbook-by-limiting-the-hosts)
 	- [Ansible Documentation](#ansible-documentation)
 	- [Ansible Help](#ansible-help)
 * [Basic Ansible Ad-Hoc Commands](#basic-ansible-ad-hoc-commands)
@@ -31,7 +35,7 @@ This guide will be focused mainly on the application of these commands on Networ
 
 A working setup of Ansible system with at least one EXOS device.
 
-> Refer [this](https://github.com/extremenetworks/ansible-extreme/blob/master/GettingStartedwithAnsibleusingGNS3.md) guide to prepare a similar setup on GNS3
+> Refer [this](./GettingStartedwithAnsibleusingGNS3.md) guide to prepare a similar setup on GNS3
 
 ## Basic Ansible Commands
 
@@ -69,6 +73,38 @@ Sample command and output:
     S4
     S5
 ```
+### Running Ansible Playbook
+
+```ansible-playbook <playbook_name>.yaml/yml```
+
+Use this command to execute ansible playbooks. Sample below:
+
+```ansible-playbook sh_version.yaml```
+
+#### Running Ansible Playbook in Check mode
+
+When ansible-playbook is executed with --check it will not make any changes on remote systems. Instead, any module instrumented to support ‘check mode’ will report what changes they would have made rather than making them. It is always a good practice to first execute the playbook in check/Dry Run mode before runnning it on a production environment. Example below:
+
+```ansible-playbook sh_verison.yaml --check```
+
+#### Running Ansible Playbook in Verbose mode
+
+Run ansible playbooks or Ad-Hoc Commands in verbose mode to get the verbose info regarding the execution of the task/s. This comes handy while troubleshooting the playbook execution failures. Refer example below:
+
+```ansible-playbook sh_verison.yaml -v```
+
+Use `-vvv` for more and `-vvvv` to enable connection debugging
+
+#### Running Ansible Playbook by Limiting the Hosts
+
+```ansible-playbook <playbook_name>.yaml/yml --limit <host_name>```
+
+This commmand will limit the playbook to get executed only on those hosts which are mentioned after the `--limit` option,  irrespective of whats been there inside the Playbook. Example Below:
+
+```ansible-playbook sh_verison.yaml -limit S5```
+
+In the above command the playbook will get executed only on host 'S5'
+
 ### Ansible Documentation
 
 ```ansible-doc <module_name>```
