@@ -15,7 +15,6 @@
 	- [Ansible Help](#ansible-help)
 * [Basic Ansible Ad-Hoc Commands](#basic-ansible-ad-hoc-commands)
 	- [Pinging Hosts](#pinging-hosts)
-	- [Gathering Facts](#gathering-facts)
 	- [Get Version Details](#get-version-details)
 	- [Passing Multiple show Commands](#passing-multiple-show-commands)
   	- [Logging in with a different user](#logging-in-with-a-different-user)
@@ -137,23 +136,6 @@ S1 | SUCCESS => {
     "changed": false,
     "ping": "pong"
 }
-```
-
-### Gathering Facts
-
-```ansible <device> -m setup```
-
-Use this command to gather different facts of the device. Replace ```device``` with the group name or hostname of the device for which the detail needs to be gathered.
-
-Sample command and **truncated** output below:
-
-```sh
-(venv) root@Net:~# ansible S1 -m setup
-S1 | SUCCESS => {
-    "ansible_facts": {
-        "ansible_apparmor": {
-            "status": "disabled"
-        },
 ```
 ### Get Version Details
 
