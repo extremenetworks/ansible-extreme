@@ -6,15 +6,15 @@ Examples and docs showing how to use Ansible with Extreme Networks switches and 
 
 [Ansible](https://www.ansible.com) is an Open Source configuration management system. It can be used for automating infrastructure and applications. It can also be used for automating network devices. This requires modules for your device. 
 
-[MLXe](https://www.extremenetworks.com/product/mlx-series-router/) modules are shipping in Ansible 2.5. Modules are now in active development for the [SLX series](https://www.extremenetworks.com/product/slx-9850-router/) and EXOS switches. These are Open Source, and you can follow along with the development, and try out modules as they are written. 
+[MLXe](https://www.extremenetworks.com/product/mlx-series-router/) modules were added to Ansible 2.5. [SLX series](https://www.extremenetworks.com/product/slx-9850-router/) modules were added in Ansible 2.6. The first module for EXOS, `exos_command`, shipped in 2.6.
 
-See below for more details.
+Further modules are being developed as Open Source modules, and you can follow along with the development.
 
 As modules get developed for more Extreme platforms, we'll update this doc, and add examples to this repo.
 
 ## SLX
 
-SLX modules are in active development. Currently available modules are:
+SLX modules shipped in Ansible 2.6. Currently available modules are:
 
 * slxos\_command - Run arbitrary commands
 * slxos\_config - Manage configuration sections
@@ -26,8 +26,7 @@ SLX modules are in active development. Currently available modules are:
 * slxos\_l2\_interface – Manage L2 Interfaces
 * slxos\_l3\_interface – Manage L3 Interfaces
 
-These modules are in active development. They have been merged with Ansible's pre-release branch, will be included in Ansible's next GA version -2.6, ETA late June 2018. 
-You can get access to these now - check the [README](./slxos/README.md) in the [slxos](./slxos) folder for more details about what the modules can do, how to install them, and example playbooks.
+Check the [README](./slxos/README.md) in the [slxos](./slxos) folder for more details about what the modules can do, how to install them, and example playbooks.
 
 ## Ironware (MLXe)
 
@@ -43,12 +42,12 @@ Click the links above to see docs on how to use those modules.
 
 ## EXOS
 
-[Rafael Vencioneck](https://github.com/rdvencioneck) has begun work on EXOS modules. The first of these has been merged into the Ansible devel branch, and will go GA in version 2.6 (ETA June 2018). 
+[Rafael Vencioneck](https://github.com/rdvencioneck) has begun work on EXOS modules. The first of these has shipped with Ansible 2.6.
 
 Available modules:
 
 * [exos_command](https://docs.ansible.com/ansible/devel/modules/exos_command_module.html) - Run arbitrary commands
 
-Refer [this](./GettingStartedwithAnsibleusingGNS3.md) guide to simulate Ansible on EXOS devices using GNS3
+See [this](./GettingStartedwithAnsibleusingGNS3.md) guide to simulate Ansible on EXOS devices using GNS3
 
 Click the links above to see docs on how to use those modules.
