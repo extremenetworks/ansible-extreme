@@ -2,11 +2,9 @@
 
 This document explains how to use Ansible with Extreme SLX devices.
 
-These modules have now yet been merged with upstream Ansible. They are currently in the "devel" branch. They will be included in 2.6 GA, which is expected to ship in late June 2018. Until then, there are some additional steps required to use these modules. 
+These modules shipped with Ansible 2.6. 
 
-These instructions will show you how to set up a dev environment in your home directory, and provides example playbooks for using each of the available modules.
-
-These instructions will be updated when Ansible 2.6 goes GA.
+These instructions will show you example playbooks for using each of the available modules.
 
 ## Sections:
 
@@ -28,21 +26,14 @@ SLX Module documentation is in the [Ansible docs here](http://docs.ansible.com/a
 
 ## System Setup
 
-Install Ansible in your home directory, using the latest development branch:
-
-> NB When Ansible 2.6 ships, you will be able to install Ansible using [normal Ansible installation procedures](https://docs.ansible.com/ansible/intro_installation.html).
+Install Ansible in your home directory, using the [normal Ansible installation procedures](https://docs.ansible.com/ansible/intro_installation.html). You can use `pip`, `yum`, or `apt`, as appropriate for your environment.
 
 ### First time setup:
 
 #### Ansible Install
 
-```shell
-git clone https://github.com/ansible/ansible.git --recursive
-cd ansible
-virtualenv venv
-.  ./venv/bin/activate
-pip install -r requirements.txt
-```
+Install Ansible using standard procedures, e.g. `sudo -H pip install -U ansible`. You must use at least version 2.6 for these
+instructions to work.
 
 #### Initial Configuration
 
@@ -51,7 +42,6 @@ Add entries to `/etc/hosts` file for your switches - e.g. `172.16.10.42 slx01`
 Create `~/.ansible.cfg` containing this:
 ```ini
 [defaults]
-ansible_python_interpreter=~/ansible/venv/bin/python
 host_key_checking = False
 inventory = ~/playbooks/hosts 
 ```
@@ -74,22 +64,6 @@ ansible_ssh_pass: password
 ```
 
 Replace `password` with the password you use to authenticate to your SLX devices. Yes, you should really be using `ansible-vault` for this file. If you know what that is, use it. If you don't, don't worry about it right now.
-
-### At Each Login:
-
-The above commands only need to be run the first time you do setup. Next time you login, you just need to run these commands:
-
-```shell
-cd ansible
-. ./venv/bin/activate
-. ./hacking/env-setup
-```
-
-Periodically you should pull down the latest developments. Run these commands:
-```shell
-cd ~/ansible
-git pull
-```
 
 ## Multi-Node Demo
 
@@ -126,7 +100,7 @@ Create [slx_command_ver.yaml](./playbooks/slx_command_ver.yaml), containing this
 ```
 Run it with `ansible-playbook slx_command_ver.yaml`. Here's some example output:
 ```shell
-(venv) lhill@bwc:~/playbooks$ ansible-playbook slx_command_ver.yaml
+lhill@bwc:~/playbooks$ ansible-playbook slx_command_ver.yaml
 
 PLAY [slx01] *************************************************************************************************************************
 
@@ -194,7 +168,7 @@ Create [slx_command_ntp.yaml](./playbooks/slx_command_ntp.yaml):
 
 Example output:
 ```shell
-(venv) lhill@bwc:~/playbooks$ ansible-playbook slx_command_ntp.yaml
+lhill@bwc:~/playbooks$ ansible-playbook slx_command_ntp.yaml
 
 PLAY [slx01] *************************************************************************************************************************
 
@@ -208,7 +182,7 @@ fatal: [slx01]: FAILED! => {"changed": false, "failed": true, "failed_conditions
 PLAY RECAP ***************************************************************************************************************************
 slx01                      : ok=1    changed=0    unreachable=0    failed=1
 
-(venv) lhill@bwc:~/playbooks$
+lhill@bwc:~/playbooks$
 ```
 Note that this is the expected behavior - that second task **should** fail.
 
@@ -250,7 +224,7 @@ SLX01#
 ```
 Example output (note the added `-vv` here to give us additional information about what's happening):
 ```shell
-(venv) lhill@bwc:~/playbooks$ ansible-playbook -vv slx_config_set_ntp.yaml
+lhill@bwc:~/playbooks$ ansible-playbook -vv slx_config_set_ntp.yaml
 ansible-playbook 2.6.0 (slxos_modules 2a7acba239) last updated 2018/02/21 02:06:16 (GMT +200)
   config file = /home/lhill/.ansible.cfg
   configured module search path = [u'/home/lhill/.ansible/plugins/modules', u'/usr/share/ansible/plugins/modules']
@@ -274,7 +248,7 @@ META: ran handlers
 PLAY RECAP ***************************************************************************************************************************
 slx01                      : ok=1    changed=1    unreachable=0    failed=0
 
-(venv) lhill@bwc:~/playbooks$
+lhill@bwc:~/playbooks$
 ```
 Now look at the startup and running configs on the device:
 ```
@@ -290,7 +264,7 @@ We can see our command has been added **and saved**.
 
 Now run the playbook again:
 ```shell
-(venv) lhill@bwc:~/playbooks$ ansible-playbook -v slx_config_set_ntp.yaml
+lhill@bwc:~/playbooks$ ansible-playbook -v slx_config_set_ntp.yaml
 Using /home/lhill/.ansible.cfg as config file
 
 PLAY [slx01] *************************************************************************************************************************
@@ -301,7 +275,7 @@ ok: [slx01] => {"changed": false, "failed": false}
 PLAY RECAP ***************************************************************************************************************************
 slx01                      : ok=1    changed=0    unreachable=0    failed=0
 
-(venv) lhill@bwc:~/playbooks$
+lhill@bwc:~/playbooks$
 ```
 Note the output: `changed=0`. It sees that the line is already there, and does not need to be changed.
 
@@ -323,7 +297,7 @@ Create [slx_config_remove_ntp.yaml](./playbooks/slx_config_remove_ntp.yaml):
 
 Output:
 ```shell
-(venv) lhill@bwc:~/playbooks$ ansible-playbook -v slx_config_remove_ntp.yaml
+lhill@bwc:~/playbooks$ ansible-playbook -v slx_config_remove_ntp.yaml
 Using /home/lhill/.ansible.cfg as config file
 
 PLAY [slx01] *************************************************************************************************************************
@@ -334,7 +308,7 @@ changed: [slx01] => {"changed": true, "commands": ["no ntp server 172.16.10.3 us
 PLAY RECAP ***************************************************************************************************************************
 slx01                      : ok=1    changed=1    unreachable=0    failed=0
 
-(venv) lhill@bwc:~/playbooks$
+lhill@bwc:~/playbooks$
 ```
 
 3. More complex configuration using `parents`
@@ -366,7 +340,7 @@ This example has multiple tasks - first it grabs the running config, and saves i
 ```
 Example output:
 ```shell
-(venv) lhill@bwc:~/playbooks$ ansible-playbook slx_config_parents.yaml
+lhill@bwc:~/playbooks$ ansible-playbook slx_config_parents.yaml
 
 PLAY [slx01] *************************************************************************************************************************
 
@@ -385,11 +359,11 @@ changed: [slx01]
 PLAY RECAP ***************************************************************************************************************************
 slx01                      : ok=4    changed=2    unreachable=0    failed=0
 
-(venv) lhill@bwc:~/playbooks$
+lhill@bwc:~/playbooks$
 ```
 We can see that we have a backup file saved locally:
 ```shell
-(venv) lhill@bwc:~/playbooks$ head backups/slx01-2018-02-21T06\:55\:58Z.txt
+lhill@bwc:~/playbooks$ head backups/slx01-2018-02-21T06\:55\:58Z.txt
 root enable
 host-table aging-mode conversational
 clock timezone Etc/GMT
@@ -400,7 +374,7 @@ hardware
  system-mode default
 !
 http server use-vrf default-vrf
-(venv) lhill@bwc:~/playbooks$
+lhill@bwc:~/playbooks$
 ```
 And we can see that our `protocol ptp` command was added to one specific interface:
 ```
@@ -452,7 +426,7 @@ The interface is similar to to the [ios_facts](http://docs.ansible.com/ansible/d
 
 Example output:
 ```shell
-(venv) extreme@rancid:~/playbooks$ ansible-playbook slx_facts_default.yaml
+extreme@rancid:~/playbooks$ ansible-playbook slx_facts_default.yaml
 
 PLAY [slx01] **************************************************************************************************************************************
 
@@ -490,7 +464,7 @@ ok: [slx01] => {
 PLAY RECAP ****************************************************************************************************************************************
 slx01                      : ok=2    changed=0    unreachable=0    failed=0
 
-(venv) extreme@rancid:~/playbooks$
+extreme@rancid:~/playbooks$
 ```
 
 2. Gather interface data only
@@ -514,7 +488,7 @@ slx01                      : ok=2    changed=0    unreachable=0    failed=0
 Example output (truncated):
 
 ```shell
-(venv) extreme@rancid:~/playbooks$ ansible-playbook slx_facts_interfaces.yaml
+extreme@rancid:~/playbooks$ ansible-playbook slx_facts_interfaces.yaml
 
 PLAY [slx01] **************************************************************************************************************************************
 
@@ -648,7 +622,7 @@ ok: [slx01] => {
 PLAY RECAP ****************************************************************************************************************************************
 slx01                      : ok=2    changed=0    unreachable=0    failed=0
 
-(venv) extreme@rancid:~/playbooks$
+extreme@rancid:~/playbooks$
 ```
 
 3. Get all facts
@@ -667,7 +641,7 @@ slx01                      : ok=2    changed=0    unreachable=0    failed=0
 
 Example output:
 ```shell
-(venv) extreme@rancid:~/playbooks$ ansible-playbook slx_facts_all.yaml
+extreme@rancid:~/playbooks$ ansible-playbook slx_facts_all.yaml
 
 PLAY [slx01] **************************************************************************************************************************************
 
@@ -677,7 +651,7 @@ ok: [slx01]
 PLAY RECAP ****************************************************************************************************************************************
 slx01                      : ok=1    changed=0    unreachable=0    failed=0
 
-(venv) extreme@rancid:~/playbooks$
+extreme@rancid:~/playbooks$
 ```
 
 Note that no output is displayed by default. You have to either use verbose mode (`-vvvv`), or explicitly publish variables.
@@ -685,7 +659,7 @@ Note that no output is displayed by default. You have to either use verbose mode
 With verbose output (truncated):
 
 ```shell
-(venv) extreme@rancid:~/playbooks$ ansible-playbook slx_facts_all.yaml -vvvv
+extreme@rancid:~/playbooks$ ansible-playbook slx_facts_all.yaml -vvvv
 ansible-playbook 2.6.0 (slxos_modules c76b3db751) last updated 2018/02/27 15:32:41 (GMT -700)
   config file = /home/extreme/.ansible.cfg
   configured module search path = [u'/home/extreme/.ansible/plugins/modules', u'/usr/share/ansible/plugins/modules']
@@ -788,7 +762,7 @@ META: ran handlers
 PLAY RECAP ****************************************************************************************************************************************
 slx01                      : ok=1    changed=0    unreachable=0    failed=0
 
-(venv) extreme@rancid:~/playbooks$
+extreme@rancid:~/playbooks$
 ```
 
 ## Interface module - slxos_interface
@@ -826,7 +800,7 @@ SLX01#
 ```
 First run:
 ```shell
-(venv) lhill@bwc:~/playbooks$ ansible-playbook slx_interface.yaml -vv
+lhill@bwc:~/playbooks$ ansible-playbook slx_interface.yaml -vv
 ansible-playbook 2.6.0 (slxos_modules 2a7acba239) last updated 2018/02/21 02:06:16 (GMT +200)
   config file = /home/lhill/.ansible.cfg
   configured module search path = [u'/home/lhill/.ansible/plugins/modules', u'/usr/share/ansible/plugins/modules']
@@ -850,7 +824,7 @@ META: ran handlers
 PLAY RECAP ***********************************************************************************************************************************
 slx01                      : ok=1    changed=1    unreachable=0    failed=0
 
-(venv) lhill@bwc:~/playbooks$
+lhill@bwc:~/playbooks$
 ```
 
 New switch output:
@@ -866,7 +840,7 @@ SLX01#
 Run the playbook again, observe that it detects no changes required:
 
 ```shell
-(venv) lhill@bwc:~/playbooks$ ansible-playbook slx_interface.yaml
+lhill@bwc:~/playbooks$ ansible-playbook slx_interface.yaml
 
 PLAY [slx01] *********************************************************************************************************************************
 
@@ -876,7 +850,7 @@ ok: [slx01]
 PLAY RECAP ***********************************************************************************************************************************
 slx01                      : ok=1    changed=0    unreachable=0    failed=0
 
-(venv) lhill@bwc:~/playbooks$
+lhill@bwc:~/playbooks$
 ```
 
 Note **changed=0**.
@@ -913,7 +887,7 @@ i.e. this playbook should pass.
 
 Checking the output:
 ```shell
-(venv) lhill@bwc:~/playbooks$ ansible-playbook slx_interface_lldp.yaml
+lhill@bwc:~/playbooks$ ansible-playbook slx_interface_lldp.yaml
 
 PLAY [slx01] *********************************************************************************************************************************
 
@@ -923,7 +897,7 @@ ok: [slx01]
 PLAY RECAP ***********************************************************************************************************************************
 slx01                      : ok=1    changed=0    unreachable=0    failed=0
 
-(venv) lhill@bwc:~/playbooks$
+lhill@bwc:~/playbooks$
 ```
 
 Now run a slightly modified playbook - this one will set the description, and check the LLDP neighbors. Note that this time we are looking for a non-existent neighbor, so it should fail:
@@ -946,7 +920,7 @@ Now run a slightly modified playbook - this one will set the description, and ch
 
 And looking at the output:
 ```shell
-(venv) lhill@bwc:~/playbooks$ ansible-playbook slx_interface_lldp_fail.yaml -vv
+lhill@bwc:~/playbooks$ ansible-playbook slx_interface_lldp_fail.yaml -vv
 ansible-playbook 2.6.0 (slxos_modules 2a7acba239) last updated 2018/02/21 02:06:16 (GMT +200)
   config file = /home/lhill/.ansible.cfg
   configured module search path = [u'/home/lhill/.ansible/plugins/modules', u'/usr/share/ansible/plugins/modules']
@@ -969,7 +943,7 @@ fatal: [slx01]: FAILED! => {"changed": true, "failed": true, "failed_conditions"
 PLAY RECAP ***********************************************************************************************************************************
 slx01                      : ok=0    changed=0    unreachable=0    failed=1
 
-(venv) lhill@bwc:~/playbooks$
+lhill@bwc:~/playbooks$
 ```
 
 ## VLAN module - slxos_vlan
@@ -1009,7 +983,7 @@ SLX01#
 ```
 Example output:
 ```shell
-(venv) lhill@bwc:~/playbooks$ ansible-playbook slx_vlan_add.yaml
+lhill@bwc:~/playbooks$ ansible-playbook slx_vlan_add.yaml
 
 PLAY [slx01] *************************************************************************************************************************
 
@@ -1019,7 +993,7 @@ changed: [slx01]
 PLAY RECAP ***************************************************************************************************************************
 slx01                      : ok=1    changed=1    unreachable=0    failed=0
 
-(venv) lhill@bwc:~/playbooks$
+lhill@bwc:~/playbooks$
 ```
 
 And now our switch output looks like this:
@@ -1057,7 +1031,7 @@ We can use the `state: absent` option to tell our module "Ensure this VLAN is **
 ```
 Example output, running it twice:
 ```shell
-(venv) lhill@bwc:~/playbooks$ ansible-playbook slx_vlan_remove.yaml
+lhill@bwc:~/playbooks$ ansible-playbook slx_vlan_remove.yaml
 
 PLAY [slx01] *************************************************************************************************************************
 
@@ -1067,7 +1041,7 @@ changed: [slx01]
 PLAY RECAP ***************************************************************************************************************************
 slx01                      : ok=1    changed=1    unreachable=0    failed=0
 
-(venv) lhill@bwc:~/playbooks$ ansible-playbook slx_vlan_remove.yaml
+lhill@bwc:~/playbooks$ ansible-playbook slx_vlan_remove.yaml
 
 PLAY [slx01] *************************************************************************************************************************
 
@@ -1077,7 +1051,7 @@ ok: [slx01]
 PLAY RECAP ***************************************************************************************************************************
 slx01                      : ok=1    changed=0    unreachable=0    failed=0
 
-(venv) lhill@bwc:~/playbooks$
+lhill@bwc:~/playbooks$
 ```
 Note that on second run, `changed=0`.
 
@@ -1141,7 +1115,7 @@ interface Ethernet 0/7
 ```
 Example output:
 ```shell
-(venv) extreme@rancid:~/playbooks$ ansible-playbook slx_linkagg_add.yaml
+extreme@rancid:~/playbooks$ ansible-playbook slx_linkagg_add.yaml
 
 PLAY [slx01] *********************************************************************************************************************************************
 
@@ -1151,7 +1125,7 @@ changed: [slx01]
 PLAY RECAP ***********************************************************************************************************************************************
 slx01                      : ok=1    changed=1    unreachable=0    failed=0
 
-(venv) extreme@rancid:~/playbooks$
+extreme@rancid:~/playbooks$
 ```
 
 Post-execution switch state:
@@ -1199,7 +1173,7 @@ SLX01#
 ```
 Example output:
 ```shell
-(venv) extreme@rancid:~/playbooks$ ansible-playbook slx_linkagg_remove.yaml -v
+extreme@rancid:~/playbooks$ ansible-playbook slx_linkagg_remove.yaml -v
 Using /home/extreme/.ansible.cfg as config file
 
 PLAY [slx01] *********************************************************************************************************************************************
@@ -1210,7 +1184,7 @@ changed: [slx01] => {"changed": true, "commands": ["no interface port-channel 20
 PLAY RECAP ***********************************************************************************************************************************************
 slx01                      : ok=1    changed=1    unreachable=0    failed=0
 
-(venv) extreme@rancid:~/playbooks$
+extreme@rancid:~/playbooks$
 ```
 
 Post-execution switch state:
@@ -1255,7 +1229,7 @@ This module can be used to manage the status of LLDP on an SLX. This is a _decla
 ```
 Example output:
 ```shell
-(venv) extreme@rancid:~/playbooks$ ansible-playbook slx_lldp_absent.yaml -v
+extreme@rancid:~/playbooks$ ansible-playbook slx_lldp_absent.yaml -v
 Using /home/extreme/.ansible.cfg as config file
 
 PLAY [slx01] *********************************************************************************************************************************************
@@ -1266,7 +1240,7 @@ changed: [slx01] => {"changed": true, "commands": ["protocol lldp", "disable"]}
 PLAY RECAP ***********************************************************************************************************************************************
 slx01                      : ok=1    changed=1    unreachable=0    failed=0
 
-(venv) extreme@rancid:~/playbooks$
+extreme@rancid:~/playbooks$
 ```
 
 2. Enable LLDP:
@@ -1284,7 +1258,7 @@ slx01                      : ok=1    changed=1    unreachable=0    failed=0
 ```
 Example output:
 ```shell
-(venv) extreme@rancid:~/playbooks$ ansible-playbook slx_lldp_present.yaml -v
+extreme@rancid:~/playbooks$ ansible-playbook slx_lldp_present.yaml -v
 Using /home/extreme/.ansible.cfg as config file
 
 PLAY [slx01] *********************************************************************************************************************************************
@@ -1295,7 +1269,7 @@ changed: [slx01] => {"changed": true, "commands": ["protocol lldp", "no disable"
 PLAY RECAP ***********************************************************************************************************************************************
 slx01                      : ok=1    changed=1    unreachable=0    failed=0
 
-(venv) extreme@rancid:~/playbooks$
+extreme@rancid:~/playbooks$
 ```
 
 ## L2 Interface module - slxos_l2_interface
