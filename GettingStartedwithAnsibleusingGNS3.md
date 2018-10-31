@@ -89,8 +89,9 @@ EXOS-VM # enable SSH2
 auto eth0
 iface eth0 inet dhcp
 ```
-4. Power-on the container and launch its console
-5. Once powered-on, the container should automatically get an IP address from the NAT cloud via DHCP with default subnet of 192.168.122.0/24
+4. Run command "ifconfig" to check the current IP address
+5. Power-on the container and launch its console
+6. Once powered-on, the container should automatically get an IP address from the NAT cloud via DHCP with default subnet of 192.168.122.0/24
 >NOTE: This is the reason why we have assigned an IP address from 192.168.122.0/24 subnet to the EXOSVM.
 6. Ping the EXOSVM and make sure that it is reachable from the Automation container
 7. Run command ```ansible --version``` to check the currently installed version of Ansible
