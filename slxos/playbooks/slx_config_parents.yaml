@@ -11,7 +11,7 @@
     - name: Save config to file
       copy:
         content: "{{ show_run.stdout[0] }}"
-        dest: "backups/{{inventory_hostname}}-{{ansible_facts.date_time.iso8601}}.txt"
+        dest: "backups/{{ inventory_hostname }}-{{ ansible_facts.date_time.iso8601 }}.txt"
 
     - name: PTP on Eth 0/24
       slxos_config:

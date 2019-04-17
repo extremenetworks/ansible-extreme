@@ -2,15 +2,22 @@ version: 2
 jobs:
   build:
     docker:
-      - image: ansible/ansible:ubuntu1604
+      - image: williamyeh/ansible:ubuntu16.04
     steps:
       - checkout
       - run:
+          name: Install ansible-lint
           command: |
-            git clone --depth 1 -b slxos_modules https://github.com/StackStorm/ansible
-            cd ansible
-            pip install -r requirements.txt
-            . ./hacking/env-setup
             pip install ansible-lint
-            cd ../slxos/playbooks
+            ansible-lint --version
+            ansible --version
+      - run:
+          name: Ansible YAML syntax check
+          command: |
+            cd slxos/playbooks
+            ansible-playbook --syntax-check *.yaml */*.yml
+      - run:
+          name: Ansible-lint check
+          command: |
+            cd slxos/playbooks
             ansible-lint -v *.yaml */*.yml
