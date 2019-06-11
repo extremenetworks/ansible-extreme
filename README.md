@@ -54,6 +54,19 @@ See [this](./GettingStartedwithAnsibleusingGNS3.md) guide to simulate Ansible on
 
 Click the links above to see docs on how to use those modules.
 
+## NOS (VDX)
+
+[NOS modules](https://docs.ansible.com/ansible/latest/modules/list_of_network_modules.html#nos) were included in Ansible 2.7.
+
+Available modules:
+
+* [nos_command](https://docs.ansible.com/ansible/devel/modules/nos_command_module.html) - Run arbitrary commands
+* [nos_config](https://docs.ansible.com/ansible/devel/modules/nos_config_module.html) - Manage configuration sections
+* [nos_facts](https://docs.ansible.com/ansible/devel/modules/nos_facts_module.html) - Collect facts
+
+Click the links above to see docs on how to use those modules.
+
+
 ## VOSS
 
 [VOSS modules](https://docs.ansible.com/ansible/latest/modules/list_of_network_modules.html#voss) were included in Ansible 2.7.
