@@ -19,7 +19,7 @@ As modules get developed for more Extreme platforms, we'll update this doc, and 
 * [slxos_command](http://docs.ansible.com/ansible/latest/modules/slxos_command_module.html) - Run arbitrary commands
 * [slxos_config](http://docs.ansible.com/ansible/latest/modules/slxos_config_module.html) - Manage configuration sections
 * [slxos_facts](http://docs.ansible.com/ansible/latest/modules/slxos_facts_module.html) - Gather facts
-* [slxos_vlan](http://docs.ansible.com/ansible/latest/modules/slxos_vland_module.html) – Manage VLANs
+* [slxos_vlan](http://docs.ansible.com/ansible/latest/modules/slxos_vlan_module.html) – Manage VLANs
 * [slxos_interface](http://docs.ansible.com/ansible/latest/modules/slxos_interface_module.html) – Manage Interfaces
 * [slxos_linkagg](http://docs.ansible.com/ansible/latest/modules/slxos_linkagg_module.html) – Manage link aggregation groups
 * [slxos_lldp](http://docs.ansible.com/ansible/latest/modules/slxos_lldp_module.html) – Manage LLDP configuration
